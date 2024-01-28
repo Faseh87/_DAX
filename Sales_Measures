@@ -1,0 +1,18 @@
+Gross sales:
+number of products * sale price
+Gross Sales = SUMX(financials,financials[Units Sold]*financials[Sale Price])
+
+----------
+Net sales:
+gross sales - discounts
+Net Sales = [Gross Sales]-[Total Discounts]
+
+----------
+Cost of goods sold:
+unit sold * manufacturing price
+Cost of Goods Sold = SUMX(financials,financials[Units Sold]*financials[Manufacturing Price])
+
+----------
+
+Total Profit;
+Total Profit = [Net Sales]-[Cost of Goods Sold]
