@@ -1,0 +1,11 @@
+defining variable and deviding it to get percentage:
+
+% Un reffered = 
+DIVIDE(
+    VAR filterpatients =                                          (defining variable)
+    CALCULATE(        
+        [Total Patient],
+		'Patient Dataset'[department_referral]="none")            (column with value none)
+		RETURN
+		filterpatients,
+		[Total Patient])
