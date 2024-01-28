@@ -1,0 +1,7 @@
+To find maximum value in a specific table:
+
+Max Patient (Month) = 
+    MAXX(                                (this is for finding maximum value in specific coulum)
+        ALL(                             (this will now allow us to filter through any table/column)
+            Calander[Month]),            (filtred table)
+            [Total Patient])             (filtred colum)
