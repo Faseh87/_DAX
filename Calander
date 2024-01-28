@@ -14,9 +14,10 @@ Calander = ADDCOLUMNS
     (CALENDARAUTO(),
 			"Year",YEAR([Date]),
             "Month",FORMAT([Date],"mmmm"),
+            "MonthNumber",MONTH([Date]),
             "Weekday",FORMAT([Date],"dddd"),
             "WeekNumber",WEEKDAY([Date]),
-            "Weekday2",IF(WEEKDAY([Date])=1,"Weekend",IF(WEEKDAY([Date])=7,"Weekend","weekday") 
+            "Weekdays",IF(WEEKDAY([Date])=1,"Weekend",IF(WEEKDAY([Date])=7,"Weekend","weekday")
                    ))
 
 
