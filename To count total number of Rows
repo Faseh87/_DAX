@@ -1,0 +1,3 @@
+For total number of patiens/customer/any thing:
+
+Total Patient = COUNTROWS('Table name')
