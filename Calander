@@ -1,0 +1,34 @@
+Calander = CALENDAR(DATE(2010,01,01),DATE(2024,01,01))
+Date_1 = [Date].[Day]
+Day_number = WEEKDAY([Date].[Date])
+Day_name = FORMAT('Calander'[Date].[Date],"dddd")
+Month = [Date].[Month]
+Month_number = [Date].[MonthNo]
+Quater = [Date].[Quarter]
+Year = [Date].[Year]
+Weekend = IF([Day_number]=7,"Yes","No")
+--------------------------------------------------
+
+
+Calander = ADDCOLUMNS
+    (CALENDARAUTO(),
+			"Year",YEAR([Date]),
+            "Month",FORMAT([Date],"mmmm"),
+            "Weekday",FORMAT([Date],"dddd"),
+            "WeekNumber",WEEKDAY([Date]),
+            "Weekday2",IF(WEEKDAY([Date])=1,"Weekend",IF(WEEKDAY([Date])=7,"Weekend","weekday") 
+                   ))
+
+
+-----------------------------------------------
+
+Calander = ADDCOLUMNS
+    (CALENDARAUTO(),
+			"Year",YEAR([Date]),
+            "Month",FORMAT([Date],"mmmm"),
+            "MonthNumber",MONTH([Date]),
+            "Weekday",FORMAT([Date],"dddd"),
+            "WeekNumber",WEEKDAY([Date]),
+            "Quater",FORMAT([Date],"\QQ")
+        )				   
+				   
