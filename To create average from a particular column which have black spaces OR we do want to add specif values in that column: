@@ -1,0 +1,6 @@
+To create average from a particular column which have black spaces OR we do want to add specif values in that column:
+	
+Average Satisfaction = CALCULATE(													(this will calculate what we will provide inside brackets)
+    AVERAGE('Patient Dataset'[patient_sat_score]),                                  		(coulmn we want to average),
+        'Patient Dataset'[patient_sat_score]<>BLANK()										(column we want to exclude)
+        )
