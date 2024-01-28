@@ -1,0 +1,7 @@
+Percentage of any particular column in a table.
+
+% Adminstrative Schedule = 
+    DIVIDE(
+        COUNTROWS
+            (FILTER('main sheet to filter from','Exact table to filter from=TRUE()                               (True is value to filter)
+            )),[Total Patient])
