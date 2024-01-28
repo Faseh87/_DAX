@@ -1,0 +1,17 @@
+Defining variables:
+
+Profit Negative = 
+VAR VProfit = [Total Profit]
+VAR VResult = IF(VProfit<0,VProfit,0) 
+
+RETURN
+VResult
+------------ --------------
+
+Defining variables:
+
+Profit Positive = 
+VAR VProfit = [Total Profit]
+
+RETURN 
+IF(VProfit>0,VProfit,0) 
