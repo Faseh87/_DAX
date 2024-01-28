@@ -2,7 +2,7 @@ how to use switching DAX to craete a new column:
 
 Age Group = 
     SWITCH(
-        TRUE(),
+        TRUE(),                                            (Below conditions are for true)
         'Patient Dataset'[patient_age]<=10,"0-10",
         'Patient Dataset'[patient_age]<=20,"11-20",
         'Patient Dataset'[patient_age]<=30,"21-30",
@@ -10,5 +10,5 @@ Age Group =
         'Patient Dataset'[patient_age]<=50,"41-50",
         'Patient Dataset'[patient_age]<=60,"51-60",
         'Patient Dataset'[patient_age]<=70,"61-70",
-        "70+"
+        "70+"                                              (if not true)
         )
