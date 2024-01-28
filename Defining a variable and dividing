@@ -1,0 +1,12 @@
+Defining a variable and dividing:           this can be done by defining variable in a meansure and then dividing:
+
+% no Rating =
+    VAR _NoRating =                                                                             (define a variable) 
+        CALCULATE(
+            [Total Patient],
+            'Patient Dataset'[patient_sat_score]=BLANK()										(number of patient with blank rating are filtred)
+            
+        )
+        RETURN
+        DIVIDE(
+            _NoRating,[Total Patient])															(dividing variable with total rows)
