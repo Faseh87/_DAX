@@ -1,0 +1,7 @@
+To find minimum value in a specific table:
+
+Min Patient (Month) = 
+    MINX(                                (this is for finding minumum value in specific coulum)
+        ALL(                             (this will now allow us to filter through any table/column)
+            Calander[Month]),            (filtred table)
+            [Total Patient])             (filtred colum)
