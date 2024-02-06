@@ -1,0 +1,132 @@
+Adventure Works DAX
+
+Total revenue:
+Order Quantity * Unit Price
+
+
+
+
+COGS:
+Order Quantity * Ptoduct Cost
+
+
+
+
+Total Profit:
+Total revenue - COGS
+
+
+
+
+
+To get number of transactions we will use rowcount of main table:
+Total Transactions = COUNTROWS(FactInternetSales)
+
+
+
+
+
+Calculating profit of against year:
+Profit 2005 = CALCULATE([Total Profit],DimDate[Year]=2005)
+
+
+
+
+
+Calculating percentage difference between 2005 and 2006 profit:
+% Profit change 05-06 = 
+    var Profit2005 =                                                               (variable to get profit of 2005)
+        CALCULATE([Total Profit],DimDate[Year]=2005)
+    VAR profit2006 = 
+        CALCULATE([Total Profit],DimDate[Year]=2006)							   (variable to get profit of 2006)	
+        RETURN
+        DIVIDE(Profit2005,profit2006)                                              (to get %)
+
+
+
+
+		
+Profit by year:
+Profit 2005 = CALCULATE([Total Profit],DimDate[Year]=2005)
+
+
+
+
+
+% Weekday profit:
+% Weekday profit = DIVIDE(
+    CALCULATE([Total Profit],DimDate[WeekType]="Weekday"),[Total Profit],0)
+
+
+
+
+% Weekend profit:	
+% Weekend profit = DIVIDE(
+     CALCULATE([Total Profit],DimDate[WeekType]="Weekend"),[Total Profit],0)
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+To find MIN value against month (any column)
+Min Value by Month = 
+    VAR minValue = 
+    CALCULATE(
+    MINX(
+        ALL(
+            DimDate[Month Name]),
+            [Total Profit]
+    ))
+    RETURN
+    minValue
+	
+	
+	
+	
+	
+	
+To find MIN value against month (any column)	
+Max Value by Month = 
+    VAR maxValue = 
+    CALCULATE(
+    MAXX(
+        ALL(
+            DimDate[Month Name]),
+            [Total Profit]
+    ))
+    RETURN
+    maxValue
+
+
+
+
+ Max Profit by Month:
+ Max Profit by Month = 
+    VAR maxValue = 
+    CALCULATE(
+    MAXX(
+        ALL(
+            DimDate[Month Name]),
+            [Total Profit]
+    ))
+    RETURN
+    maxValue      
+	
+
+
+
+
+
+Max Profit by year:	
+Max Profit by year = 
+VAR MaxProfit = 
+CALCULATE(
+    MAXX(
+        ALL(
+            DimDate[Year]),
+            [Total Profit] 
+        ))
+        RETURN
+        MaxProfit
