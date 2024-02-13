@@ -1,0 +1,12 @@
+how to show text on heat map or any thing acording to value zero or one: (in value of parameter is 0 then it will show 1st statment, if value is 1 it will show 2nd statment)
+
+1st define Parameters:
+than use this DAX:
+
+HeatMap Caption = 
+    VAR _SelectedMeasure = 
+    SELECTEDVALUE(Parameter[Parameter Order])
+    RETURN
+    IF( _SelectedMeasure = 0,
+       "Darkest Purple color shows maximum satisfaction",
+       "Darkest Red color shows maximum wait time")
