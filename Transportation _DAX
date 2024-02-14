@@ -1,0 +1,67 @@
+Busiest Route = 
+    VAR _total_passenger_per_route = 
+    SUMMARIZE(
+        Loopup_route,
+        Loopup_route[RouteName],
+        "Total_Passengers",SUM(FactTable_Ridership[NumberOfRiders])
+        )
+        VAR _Top_route = 
+        TOPN(
+            1,
+            _total_passenger_per_route,
+            [Total_Passengers],
+            DESC
+        )
+        RETURN
+        MAXX(
+            _Top_route,
+            Loopup_route[RouteName]
+        )
+
+
+-------------------------------------------------
+
+Least Busy Route = 
+    VAR _total_passenger_per_route = 
+    SUMMARIZE(
+        Loopup_route,
+        Loopup_route[RouteName],
+        "Total_Passengers",SUM(FactTable_Ridership[NumberOfRiders])
+        )
+        VAR _Top_route = 
+        TOPN(
+            1,
+            _total_passenger_per_route,
+            [Total_Passengers],
+            ASC
+        )
+        RETURN
+        MAXX(
+            _Top_route,
+            Loopup_route[RouteName]
+        )
+
+--------------------------------------------------
+
+Time Group = 
+    VAR _Time = 
+        MOD(HOUR(FactTable_Ridership[Time]),24)
+        RETURN
+        SWITCH(
+            TRUE(),
+            _Time<3, "12 : 00 AM - 02 : 59 AM",
+            _Time<6, "3 : 00 AM - 05 : 59 AM",
+            _Time<9, "6 : 00 AM - 08 : 59 AM",
+            _Time<12, "9 : 00 AM - 11 : 59 AM",
+            _Time<15, "12 : 00 PM - 14 : 59 PM",
+            _Time<18, "15 : 00 PM - 17 : 59 PM",
+            _Time<21, "18 : 00 PM - 20 : 59 PM",
+             "21 : 00 PM - 23 : 59 PM"
+        )
+
+________________________________________________
+
+
+Total Riders (Passangers) = SUM(FactTable_Ridership[NumberOfRiders])
+
+-------------------------------------------------
