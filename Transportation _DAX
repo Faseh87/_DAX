@@ -65,3 +65,173 @@ ________________________________________________
 Total Riders (Passangers) = SUM(FactTable_Ridership[NumberOfRiders])
 
 -------------------------------------------------
+how to find peak hour:
+
+Peak hour of operation = 
+    VAR _total_passenger_per_route = 
+    SUMMARIZE(
+        FactTable_Ridership,
+        FactTable_Ridership[Time],
+        "Total_Passengers",SUM(FactTable_Ridership[NumberOfRiders])
+        )
+        VAR _PeakTime = 
+        TOPN(
+            1,
+            _total_passenger_per_route,
+            [Total_Passengers],
+            DESC
+        )
+        RETURN
+        MAXX(
+            _PeakTime,
+           FactTable_Ridership[Time]
+        )
+		
+____________________________________________________________
+
+how to find down hour:
+
+Least Busy Route = 
+    VAR _total_passenger_per_route = 
+    SUMMARIZE(
+        Loopup_route,
+        Loopup_route[RouteName],
+        "Total_Passengers",SUM(FactTable_Ridership[NumberOfRiders])
+        )
+        VAR _Top_route = 
+        TOPN(
+            1,
+            _total_passenger_per_route,
+            [Total_Passengers],
+            ASC
+        )
+        RETURN
+        MAXX(
+            _Top_route,
+            Loopup_route[RouteName]
+        )
+		
+____________________________________________________________
+
+Number of passenger on peak hour:
+
+V_Peak hour of operation = 
+    VAR _total_passenger_per_route = 
+    SUMMARIZE(
+        FactTable_Ridership,
+        FactTable_Ridership[Time],
+        "Total_Passengers",SUM(FactTable_Ridership[NumberOfRiders])
+        )
+        VAR _PeakTime = 
+        TOPN(
+            1,
+            _total_passenger_per_route,
+            [Total_Passengers],
+            DESC
+        )
+        RETURN
+        MAXX(
+            _PeakTime,
+           [Total Riders (Passangers)]
+        )
+		
+		
+		
+____________________________________________________________
+
+Number of passenger on down hour:
+
+V_Down hour of operation = 
+    VAR _total_passenger_per_route = 
+    SUMMARIZE(
+        FactTable_Ridership,
+        FactTable_Ridership[Time],
+        "Total_Passengers",SUM(FactTable_Ridership[NumberOfRiders])
+        )
+        VAR _DownTime = 
+        TOPN(
+            1,
+            _total_passenger_per_route,
+            [Total_Passengers],
+            ASC
+        )
+        RETURN
+        MAXX(
+            _DownTime,
+           [Total Riders (Passangers)]
+        )
+		
+____________________________________________________________
+
+Total busses in use:
+
+Total Busses = 
+    DISTINCTCOUNT(FactTable_Ridership[BusID])
+
+____________________________________________________________
+
+Busses Utilization:
+
+Utilization = 
+    VAR _utiliztion= 
+        DIVIDE
+        ([Total Riders (Passangers)],
+        [Total Bus Capacity]
+        )
+        RETURN
+            SWITCH(
+        TRUE(),
+        _utiliztion<0.5,"Underutilize",
+        _utiliztion>0.9,"Overutilize",
+        "Properutilize"
+    )
+	
+________________________________________________
+
+Total Bus capacity:
+
+Total Bus Capacity = 
+    SUM(LookupTable_buses[Capacity])
+
+________________________________________________
+
+Year on Year change in passenger:
+
+YoY Change = 
+    VAR _currentYearRides = 
+        CALCULATE([Total Riders (Passangers)],
+        YEAR(FactTable_Ridership[Date])
+        =YEAR(NOW())
+        )
+    VAR _PreviousYearRides = 
+        CALCULATE([Total Riders (Passangers)],
+        YEAR(FactTable_Ridership[Date])
+        =YEAR(NOW())-1
+        )
+    RETURN
+    // IF(
+    // NOT ISBLANK(_currentYearRides) && NOT ISBLANK(_PreviousYearRides),
+    (_currentYearRides - _PreviousYearRides)/_PreviousYearRides
+    // )
+
+________________________________________________
+
+YOY arrow = 
+    IF(
+        [YoY Change]<0,
+        "▼",
+        "▲"
+        )
+
+________________________________________________
+
+CF YOY arrow = 
+    IF(
+        [YoY Change]<0,
+        "Red",
+        "Green"
+        )
+________________________________________________
+
+		
+
