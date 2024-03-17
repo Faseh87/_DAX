@@ -233,5 +233,12 @@ CF YOY arrow =
         )
 ________________________________________________
 
-		
+Caption = 
+    IF(
+        SELECTEDVALUE(Dynamic_N[Dynamic_N Order])=0,
+        "Under-Performing Buses are Selected",
+        "Top Performing Buses are Selected"
+    )		
+
+________________________________________________
 
