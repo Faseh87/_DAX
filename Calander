@@ -31,6 +31,37 @@ Calander = ADDCOLUMNS
             "Weekday",FORMAT([Date],"dddd"),
             "WeekNumber",WEEKDAY([Date]),
             "Quater",FORMAT([Date],"\QQ")
-        )				   
+)
+-----------------------------------------------
+
+Calender = ADDCOLUMNS(CALENDARAUTO(),"Year",YEAR([Date]),"Month",FORMAT([Date],"mmmm"),"Day",FORMAT([Date],"dddd"))
+
+-----------------------------------------------
+Calander = ADDCOLUMNS
+    (CALENDARAUTO(),
+	       "Year",YEAR([Date]),
+            "Month",FORMAT([Date],"mmmm"),
+            "MonthNumber",MONTH([Date]),
+            "Weekday",FORMAT([Date],"dddd"),
+            "WeekNumber",WEEKDAY([Date]),
+            "Weekdays",IF(WEEKDAY([Date])=1,"Weekend",IF(WEEKDAY([Date])=7,"Weekend","weekday")),
+            "Qtr",FORMAT([Date],"\QQ")
+                   )
+-----------------------------------------------
+
+-----------------------------------------------
+
+-----------------------------------------------
+
+-----------------------------------------------
+
+-----------------------------------------------
+
+-----------------------------------------------
+
+-----------------------------------------------
+
+
+				   
 				   
 -----------------------------------------------
