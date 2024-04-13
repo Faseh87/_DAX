@@ -110,7 +110,17 @@ RETURN
 
     IF(_CheckRank<='Choose Ranks'[Choose Ranks Value],[Total Revenue])
 ------------------------------------------------
-
+Conditional Formating =                                      // for coloring bars based on conditions
+    VAR _TotalRevenue = [Total Revenue]
+    VAR _TotalBudget = [Total Budget]
+    VAR _Result =
+    SWITCH(
+        True(),
+        _TotalRevenue<_TotalBudget,"##F80012",
+        "#27547E"
+    )
+    RETURN
+    _Result
 ------------------------------------------------
 
 ------------------------------------------------
