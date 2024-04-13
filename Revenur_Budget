@@ -55,13 +55,60 @@ RETURN
 For Top/Bottom
 add a table and give value 1 for top and 2 for bottom
 ------------------------------------------------
-
+For Selet to rank
+add a parameter with feilds
 ------------------------------------------------
-
+ProductGroup_Revenue = 
+    VAR _Top = RANKX(ALL(Dim_Product[ProductGroup]),[Total Revenue],,DESC)
+    VAR _Bottom = RANKX(ALL(Dim_Product[ProductGroup]),[Total Revenue],,ASC)
+    VAR _SelectRankType = SELECTEDVALUE('Chose RankType'[Select])
+    VAR _RankingType = 
+        IF(_SelectRankType = "Top",
+        _Top,
+        _Bottom
+        )
+RETURN
+       IF(_RankingType<='Choose Ranks'[Choose Ranks Value],[Total Revenue]
+       )
 ------------------------------------------------
-
+SalesPerson_Revenue = 
+    VAR _Top = RANKX(ALL(Dim_SalePerson[SalesPerson]),[Total Revenue],,DESC)
+    VAR _Bottom = RANKX(ALL(Dim_SalePerson[SalesPerson]),[Total Revenue],,ASC)
+    VAR _SelectRankType = SELECTEDVALUE('Chose RankType'[Select])
+    VAR _RankingType = 
+        IF(_SelectRankType = "Top",
+        _Top,
+        _Bottom
+        )
+RETURN
+       IF(_RankingType<='Choose Ranks'[Choose Ranks Value],[Total Revenue]
+       )
 ------------------------------------------------
+Revenue = 
+    VAR _TopProductName = RANKX(ALL(Dim_Product[ProductName]),[Total Revenue],,DESC)
+    VAR _BottomProductName = RANKX(ALL(Dim_Product[ProductName]),[Total Revenue],,ASC)
 
+    VAR _TopProductGroup = RANKX(ALL(Dim_Product[ProductGroup]),[Total Revenue],,DESC)
+    VAR _BottomProductGroup = RANKX(ALL(Dim_Product[ProductGroup]),[Total Revenue],,ASC)
+
+    VAR _TopSalesPerson = RANKX(ALL(Dim_SalePerson[SalesPerson]),[Total Revenue],,DESC)
+    VAR _BottomSalesPerson = RANKX(ALL(Dim_SalePerson[SalesPerson]),[Total Revenue],,ASC)
+
+
+    VAR _CheckRank =
+        IF(CONTAINSSTRING(SELECTEDVALUE(SelectToRank[Fields]),"ProductName"),
+        IF(SELECTEDVALUE('Chose RankType'[Select])="Top",_TopProductName,_BottomProductName),
+        
+        IF(CONTAINSSTRING(SELECTEDVALUE(SelectToRank[Fields]),"ProductGroup"),
+        IF(SELECTEDVALUE('Chose RankType'[Select])="Top",_TopProductGroup,_BottomProductGroup),
+        
+        IF(SELECTEDVALUE('Chose RankType'[Select])="Top",_TopSalesPerson,_BottomSalesPerson)
+        )
+        )
+
+RETURN
+
+    IF(_CheckRank<='Choose Ranks'[Choose Ranks Value],[Total Revenue])
 ------------------------------------------------
 
 ------------------------------------------------
