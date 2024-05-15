@@ -52,7 +52,7 @@ Start of Month = STARTOFMONTH(Calander[Date])
 -----------------------------------------------
 Start Of Week = Calander[Date]-WEEKDAY(Calander[Date],3)
 -----------------------------------------------
-
+End Of Week = Calander[Date]-WEEKDAY(Calander[Date],3)+6
 -----------------------------------------------
 
 -----------------------------------------------
