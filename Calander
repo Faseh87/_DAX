@@ -48,7 +48,7 @@ Calander = ADDCOLUMNS
             "Qtr",FORMAT([Date],"\QQ")
                    )
 -----------------------------------------------
-Start of week = STARTOFMONTH(Calander[Date])
+Start of Month = STARTOFMONTH(Calander[Date])
 -----------------------------------------------
 Start Of Week = Calander[Date]-WEEKDAY(Calander[Date],3)
 -----------------------------------------------
