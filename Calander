@@ -54,6 +54,14 @@ Start Of Week = Calander[Date]-WEEKDAY(Calander[Date],3)
 -----------------------------------------------
 End Of Week = Calander[Date]-WEEKDAY(Calander[Date],3)+6
 -----------------------------------------------
+How to get Day name:
+Month Name = FORMAT([Date], "DD")
+How to get Month name:
+Month Name = FORMAT([Date], "MMMM")
+How to get Year name:
+Month Name = FORMAT([Date], "YYYY")
+
+
 
 -----------------------------------------------
 
