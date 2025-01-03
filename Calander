@@ -61,12 +61,18 @@ Month Name = FORMAT([Date], "MMMM")
 How to get Year name:
 Month Name = FORMAT([Date], "YYYY")
 -----------------------------------------------
-How to start week from desired day:
-Day Number = WEEKDAY('Calendar Lookup'[Date],2)   --------------------------> last "2" will set start of week's day
------------------------------------------------
+NOTE:
+These are used for week by week comparison:
 
------------------------------------------------
+How to find day number in a week:
+Day Number = WEEKDAY('Calendar Lookup'[Date],2)    --------------------------> last "2" will set start of week's day
 
+How to find week number in an year:
+Week Number = WEEKNUM('Calendar Lookup'[Date],2)   --------------------------> last "2" will set start of week's day
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
+-----------------------------------------------
 
 				   
 				   
