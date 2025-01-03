@@ -1,0 +1,1 @@
+Age (DAX) = DATEDIFF('Customer Lookup'[BirthDate],TODAY(),YEAR)
