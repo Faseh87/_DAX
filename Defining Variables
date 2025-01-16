@@ -15,3 +15,11 @@ VAR VProfit = [Total Profit]
 
 RETURN 
 IF(VProfit>0,VProfit,0) 
+
+------------ --------------
+
+% Monthly Cont_Var = 
+    var _TotalSales = CALCULATE([Total Sales Quantity],ALL('Sales Data Folder'))
+    RETURN
+    DIVIDE([Total Sales Quantity],_TotalSales,"No Sales")
+    
