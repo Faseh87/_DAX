@@ -1,0 +1,8 @@
+
+Fitler is used if we want to use a mearsure within measure (2nd measure is to reference something)
+
+High Ticket Size Product_Filter = 
+    CALCULATE(
+        [Total Sales Quantity],
+        FILTER('Product Lookup','Product Lookup'[ProductPrice]>[Overall Avg Price])
+        )
