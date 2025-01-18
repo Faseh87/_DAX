@@ -1,5 +1,5 @@
 
-Fitler is used if we want to use a mearsure within measure (2nd measure is to reference something)
+While using Calculate Function, its filter parameter will not work with dynamic value, so Fitler is use if we want to use a dynamic value as filter parameter.
 
 High Ticket Size Product_Filter = 
     CALCULATE(
