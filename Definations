@@ -1,0 +1,4 @@
+Related:
+Related function is used if we want to add any new column in any table.
+Eg: Product Price DAX = RELATED('Product Lookup'[ProductPrice])
+  This will add "product price" column in selected table. 
