@@ -1,0 +1,4 @@
+SumX:
+  This will sum the given values on row level
+Eg:
+  Total Revenue Iterator FX = SUMX('Sales Data','Sales Data'[OrderQuantity]*RELATED('Product Lookup'[ProductPrice]))
