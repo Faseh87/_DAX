@@ -1,0 +1,2 @@
+Previous Month Revenue = CALCULATE([Total Revenue],DATEADD('Calendar Lookup'[Date],-1,MONTH))
+  This will show revenue of previous month.
