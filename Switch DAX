@@ -1,5 +1,7 @@
 how to use switching DAX to craete a new column:
 
+                                                NOTE:  TRUE is use where number format is involved:
+
 Age Group = 
     SWITCH(
         TRUE(),                                            (Below conditions are for true) ----> We use TRUE when we are dealing with numeric values in condition.
