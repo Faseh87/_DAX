@@ -1,0 +1,3 @@
+how to use Blank:
+
+Revenue Year To Date YTD = IF(ISBLANK([Total Revenue]),BLANK(),CALCULATE([Total Revenue],DATESYTD('Calendar Lookup'[Date])))
