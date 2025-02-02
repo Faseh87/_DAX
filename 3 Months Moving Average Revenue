@@ -1,0 +1,10 @@
+3 Months Moving Average Revenue = 
+    AVERAGEX(
+        DATESINPERIOD(
+            'Calendar'[date], 
+            LASTDATE('Calendar'[date]), 
+            -3, 
+            MONTH
+        ), 
+        [Total Revenue]
+    )
