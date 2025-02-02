@@ -2,3 +2,16 @@ SumX:
   This will sum the given values on row level
 Eg:
   Total Revenue Iterator FX = SUMX('Sales Data','Sales Data'[OrderQuantity]*RELATED('Product Lookup'[ProductPrice]))
+
+______________________________________________________________________
+
+3 Months Moving Average Revenue = 
+    AVERAGEX(
+        DATESINPERIOD(
+            'Calendar'[date], 
+            LASTDATE('Calendar'[date]), 
+            -3, 
+            MONTH
+        ), 
+        [Total Revenue]
+    )
