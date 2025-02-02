@@ -1,0 +1,1 @@
+Last 90 days rolling revenue = CALCULATE([Total Revenue],DATESINPERIOD('Calendar Lookup'[Date],MAX('Calendar Lookup'[Date]),-3,MONTH))
