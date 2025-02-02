@@ -1,2 +1,25 @@
 Previous Month Revenue = CALCULATE([Total Revenue],DATEADD('Calendar Lookup'[Date],-1,MONTH))
   This will show revenue of previous month.
+=-------------------------------------
+
+YTD Revenue = CALCULATE([Total Revenue],DATESYTD('Calendar'[date]))
+
+------------------------------------------
+
+YoY% in Revenue = 
+
+VAR _PYRevenue = 
+    CALCULATE([Total Revenue],DATEADD('Calendar'[date],-1,YEAR))
+    RETURN
+DIVIDE([Total Revenue]-_PYRevenue,_PYRevenue,"No Sale")
+
+-------------------------------------------
+
+MoM% in Revenue = 
+    DIVIDE(
+        [Total Revenue] - [Last Month Revenue], 
+        [Last Month Revenue], 
+        "No Sale"
+    )
+
+-------------------------------------------
