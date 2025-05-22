@@ -1,0 +1,12 @@
+how to filter last week data.
+
+Last Week MNO = 
+VAR LatestWeek = MAX(PRS[Week Number])
+RETURN
+CALCULATE(
+    COUNTA(PRS[MNO]),   --------------------  data to filter
+    FILTER(
+        PRS,
+        PRS[Week Number] = LatestWeek
+    )
+)
