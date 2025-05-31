@@ -94,6 +94,12 @@ Weekend = SWITCH(
     "N"
 )
 -----------------------------------------------
+Extract all dates from existing date column in any table:
+
+Calender = 
+DISTINCT(
+SELECTCOLUMNS(PRS, "Date", PRS[Date])
+)
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
